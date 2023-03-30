@@ -1,3 +1,8 @@
+#These Line were added as a part of the Excercise.
+#First the primos.py file was deleted and then restored with the followings command.
+#git revert --hash
+#in this example we use the hash number 8085b376feb5b56089455698629d82385c42ea54
+
 # prime number calculator: find all primes up to n
 max = int(input("Find primes up to what number? : "))
 primeList = []
