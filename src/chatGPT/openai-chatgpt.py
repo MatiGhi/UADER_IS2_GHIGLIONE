@@ -1,9 +1,15 @@
 import openai
 import os
 from dotenv import load_dotenv
+import readline
 
 load_dotenv()
 openai.api_key = os.getenv("OPEN_API_KEY")
+
+history_file = ".chat_history"
+
+if os.path.exists(history_file):
+    readline.read_history_file(history_file)
 
 def main():
 
@@ -14,6 +20,9 @@ def main():
             if not user_input:
                 print("La consulta está vacía. Intente nuevamente")
                 return
+            
+            readline.add_history(user_input)
+            readline.write_history_file(history_file)
             
             userquery = f"You: {user_input}"
             print(userquery)
