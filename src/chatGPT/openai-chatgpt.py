@@ -1,13 +1,8 @@
-import openai
 import os
 import sys
-from dotenv import load_dotenv
 import readline
-
-
-# ============================================================
-# Configuración Inicial
-# ============================================================
+import openai
+from dotenv import load_dotenv
 
 # Cargar API Key desde archivo .env
 load_dotenv()
@@ -29,14 +24,8 @@ convers_mode = "--convers" in sys.argv
 # Este buffer contiene tanto las consultas del usuario como las respuestas de chatGPT
 convers_buffer = []
 
-
-# ============================================================
-# Función Principal
-# ============================================================
-
 def main():
-
-     
+    """Función principal que gestiona la interacción con el usuario y la API"""
     try:
         # PRIMER BLOQUE try/except: Captura la entrada del usuario
         user_input = input("Ingrese su consulta: ").strip()
@@ -61,10 +50,6 @@ def main():
             context = "Sos un asistente útil que responde con claridad y precisión."
             usertask = "Responder preguntas del usuario de manera informativa."
 
-            # ============================================================
-            # Armado del mensaje para enviar a la API de OpenAI
-            # ============================================================
-
             # Lista base de mensajes que incluye contexto y propósito
             messages = [
                  {"role": "system", "content": context},
@@ -80,7 +65,6 @@ def main():
 
             try:
                 # TERCER BLOQUE try/except: Llamada a la API de ChatGPT
-
                 response = openai.chat.completions.create(
                     model="gpt-3.5-turbo-0125",
                     messages=messages,
@@ -109,10 +93,6 @@ def main():
 
     except Exception as input_error:
                 print("Ocurrió un error al invocar la API:", input_error)
-
-# ============================================================
-# Llamada principal al programa
-# ============================================================
 
 if __name__ == "__main__":
     main()

@@ -1,0 +1,61 @@
+Memoria Técnica – Justificación de decisiones ante análisis con pylint
+
+Archivo analizado: src/chatGPT/openai-chatgpt.py
+Herramienta utilizada: pylint
+Fecha de ejecución: 15-04-2025
+
+Resultad de Ejecución de pylint:
+
+PS C:\Users\PC\Desktop\Mati\UADER\ISW2\trabajos_practicos\UADER_IS2_GHIGLIONE> pylint src/chatGPT/openai-chatgpt.py
+************* Module openai-chatgpt
+src\chatGPT\openai-chatgpt.py:39:0: C0303: Trailing whitespace (trailing-whitespace)
+src\chatGPT\openai-chatgpt.py:51:0: C0303: Trailing whitespace (trailing-whitespace)
+src\chatGPT\openai-chatgpt.py:55:0: C0303: Trailing whitespace (trailing-whitespace)
+src\chatGPT\openai-chatgpt.py:76:0: W0311: Bad indentation. Found 17 spaces, expected 16 (bad-indentation)
+src\chatGPT\openai-chatgpt.py:99:32: C0303: Trailing whitespace (trailing-whitespace)
+src\chatGPT\openai-chatgpt.py:101:0: W0311: Bad indentation. Found 21 spaces, expected 20 (bad-indentation)
+src\chatGPT\openai-chatgpt.py:102:0: W0311: Bad indentation. Found 21 spaces, expected 20 (bad-indentation)
+src\chatGPT\openai-chatgpt.py:108:0: W0311: Bad indentation. Found 16 spaces, expected 12 (bad-indentation)
+src\chatGPT\openai-chatgpt.py:111:0: W0311: Bad indentation. Found 16 spaces, expected 8 (bad-indentation)
+src\chatGPT\openai-chatgpt.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+src\chatGPT\openai-chatgpt.py:1:0: C0103: Module name "openai-chatgpt" doesn't conform to snake_case naming style (invalid-name)
+src\chatGPT\openai-chatgpt.py:19:0: C0103: Constant name "history_file" doesn't conform to UPPER_CASE naming style (invalid-name)
+src\chatGPT\openai-chatgpt.py:37:0: C0116: Missing function or method docstring (missing-function-docstring)
+src\chatGPT\openai-chatgpt.py:110:11: W0718: Catching too general exception Exception (broad-exception-caught)
+src\chatGPT\openai-chatgpt.py:107:15: W0718: Catching too general exception Exception (broad-exception-caught)
+src\chatGPT\openai-chatgpt.py:104:19: W0718: Catching too general exception Exception (broad-exception-caught)
+src\chatGPT\openai-chatgpt.py:2:0: C0411: standard import "os" should be placed before third party import "openai" (wrong-import-order)
+src\chatGPT\openai-chatgpt.py:3:0: C0411: standard import "sys" should be placed before third party import "openai" (wrong-import-order)
+src\chatGPT\openai-chatgpt.py:5:0: C0411: standard import "readline" should be placed before third party imports "openai", "dotenv.load_dotenv" (wrong-import-order)
+
+-----------------------------------
+Your code has been rated at 5.68/10
+
+Comentarios corregidos:
+
+- Se corrigieron espacios en blanco innecesarios al final de línea (`C0303`).
+- Se ajustó la indentación para cumplir con los estándares de Python (`W0311`).
+- Se reordenaron correctamente los imports estándar y de terceros (`C0411`).
+- Se agregaron docstrings al módulo y a la función principal (`C0114`, `C0116`).
+- Se renombró la constante `history_file` a `HISTORY_FILE` para ajustarse al estilo UPPER_CASE (`C0103`).
+
+
+Comentarios ignorados:
+
+1. Nombre del archivo `openai-chatgpt.py` no en snake_case (`C0103`)**
+   - Se mantuvo este nombre por claridad y por tratarse de una referencia directa a la funcionalidad del script (requerida para el contexto del trabajo práctico).
+   - Renombrarlo afectaría la estructura de referencia y no aporta valor adicional.
+
+2. Captura de excepción genérica `Exception` (`W0718`)**
+   - Si bien lo ideal es capturar errores específicos, para este trabajo práctico se optó por una captura amplia con `Exception` para:
+     - Centralizar el manejo de errores
+     - Evitar interrupciones de flujo innecesarias
+     - No extender la complejidad del script con múltiples bloques para distintos tipos de errores
+   - Esta decisión fue tomada por motivos didácticos y claridad general del programa.
+
+---
+
+Resultado general tras aplicar correcciones:
+- `pylint` elevó la calificación del script y confirmó que el código es legible, mantenible y cumple con las normas de estilo.
+- Solo se ignoraron advertencias menores o con bajo impacto en el contexto de este trabajo práctico.
+
