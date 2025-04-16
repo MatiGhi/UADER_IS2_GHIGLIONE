@@ -1,0 +1,30 @@
+Sugerencias de Mejora proporcionadas por ChatGPT:
+
+Archivo analizado: src/chatGPT/openai-chatgpt.py
+Objetivo: Proponer mejoras estructurales y funcionales al programa.
+
+1. Modularizar funciones repetitivas
+- Separar bloques de lógica como la construcción de mensajes y la invocación a la API en funciones independientes.
+- Ejemplo: crear `construir_mensajes(...)` y `invocar_chatgpt(...)`.
+
+2. Validar errores específicos de la API
+- Capturar errores comunes como `openai.error.AuthenticationError`, `RateLimitError`, etc.
+- Esto permite dar mensajes más claros y controlados al usuario.
+
+3. Persistencia del buffer conversacional
+- Guardar el `convers_buffer` en un archivo `.json` si se activa el modo `--convers`.
+- Al reiniciar el programa, se puede cargar la conversación previa para continuar.
+
+4. Comandos especiales en consola
+- Aceptar palabras como `salir`, `exit` o `limpiar` para que el usuario tenga más control desde consola.
+- Mejora la usabilidad sin afectar la lógica del programa.
+
+5. Logging de errores y transcripciones
+- Utilizar `logging` en lugar de `print()` para capturar errores.
+- Opcionalmente guardar las interacciones en un archivo de log.
+
+6. Mensaje de ayuda al usuario
+- Si se ejecuta el script sin argumentos o con `--help`, mostrar una explicación de uso.
+- Por ejemplo: cómo activar el modo conversación, cómo salir, etc.
+
+
